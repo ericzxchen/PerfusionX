@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>perfusionX — Organ Preservation & Immune-Cloaking System</title>
+<title>PerfusionX — Organ Preservation & Immune-Cloaking System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -605,7 +605,7 @@ section {
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   position: relative;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.8s;
 }
 
 .flow-connector-line.visible { opacity: 1; }
@@ -632,10 +632,11 @@ section {
   padding: 20px 16px;
   cursor: pointer;
   position: relative;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  transition: opacity 0.9s, transform 0.9s, border-color 0.3s, box-shadow 0.3s;
   opacity: 0;
   transform: translateY(20px);
 }
+
 
 .flow-node.visible {
   opacity: 1;
@@ -761,7 +762,7 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px 24px;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  transition: opacity 0.9s, transform 0.9s, border-color 0.3s, box-shadow 0.3s;
   opacity: 0;
   transform: translateY(24px);
   cursor: default;
@@ -851,10 +852,9 @@ section {
   border-radius: var(--radius);
   padding: 20px;
   text-align: center;
-  transition: border-color 0.3s, box-shadow 0.3s;
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.5s, transform 0.5s, border-color 0.3s, box-shadow 0.3s;
+  transition: opacity 0.9s, transform 0.9s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .arch-node.visible { opacity: 1; transform: scale(1); }
@@ -907,7 +907,7 @@ section {
   padding: 24px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s, transform 0.5s, border-color 0.3s;
+  transition: opacity 0.9s, transform 0.9s, border-color 0.3s;
 }
 
 .metric-card.visible { opacity: 1; transform: translateY(0); }
@@ -945,7 +945,7 @@ section {
   border-radius: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   width: 0;
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  transition: width 1.8s cubic-bezier(0.4,0,0.2,1);
 }
 
 .metric-value {
@@ -971,7 +971,7 @@ section {
   padding: 28px 24px;
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.9s, transform 0.9s;
 }
 
 .list-card.right { transform: translateX(20px); }
@@ -1046,7 +1046,7 @@ section {
   text-align: center;
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s, transform 0.5s, border-color 0.3s;
+  transition: opacity 0.9s, transform 0.9s, border-color 0.3s;
 }
 
 .viz-card.visible { opacity: 1; transform: translateY(0); }
@@ -1069,7 +1069,7 @@ section {
   stroke-linecap: round;
   stroke-dasharray: 220;
   stroke-dashoffset: 220;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1);
+  transition: stroke-dashoffset 2s cubic-bezier(0.4,0,0.2,1);
 }
 
 .viz-ring-fill.accent-2 { stroke: var(--accent-2); }
@@ -1317,7 +1317,7 @@ footer {
   <nav class="navbar" id="navbar" role="navigation" aria-label="Primary navigation">
     <div class="nav-logo">
       <div class="nav-logo-dot"></div>
-      perfusionX
+      PerfusionX
     </div>
     <ul class="nav-links" id="nav-links">
       <li><a href="#process">Process</a></li>
@@ -1829,7 +1829,7 @@ footer {
 
   <!-- ── FOOTER ─────────────────────────────────────────────────── -->
   <footer role="contentinfo">
-    <div class="footer-brand">perfusionX</div>
+    <div class="footer-brand">PerfusionX</div>
     <p class="footer-text">Ex Vivo Perfusion &amp; LNP Immune-Cloaking Research Platform</p>
     <p class="footer-text" style="font-family:'Roboto Mono',monospace;font-size:0.7rem;color:var(--surface-3);padding:4px 10px;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;">RESEARCH CONCEPT — NOT FOR CLINICAL USE</p>
   </footer>
@@ -2034,10 +2034,10 @@ footer {
         const nodes = entry.target.querySelectorAll('.flow-node');
         const lines = entry.target.querySelectorAll('.flow-connector-line');
         nodes.forEach((n, i) => {
-          setTimeout(() => n.classList.add('visible'), i * 120);
+          setTimeout(() => n.classList.add('visible'), i * 200);
         });
         lines.forEach((l, i) => {
-          setTimeout(() => l.classList.add('visible'), i * 120 + 180);
+          setTimeout(() => l.classList.add('visible'), i * 200 + 300);
         });
         flowObserver.unobserve(entry.target);
       }
@@ -2081,19 +2081,19 @@ footer {
 
   // Staggered card delays
   document.querySelectorAll('.cards-grid .sci-card').forEach((card, i) => {
-    card.style.transitionDelay = (i * 80) + 'ms';
+    card.style.transitionDelay = (i * 140) + 'ms';
   });
 
   document.querySelectorAll('.viz-card').forEach((card, i) => {
-    card.style.transitionDelay = (i * 80) + 'ms';
+    card.style.transitionDelay = (i * 140) + 'ms';
   });
 
   document.querySelectorAll('.metric-card').forEach((card, i) => {
-    card.style.transitionDelay = (i * 60) + 'ms';
+    card.style.transitionDelay = (i * 110) + 'ms';
   });
 
   document.querySelectorAll('.arch-node').forEach((node, i) => {
-    node.style.transitionDelay = (i * 100) + 'ms';
+    node.style.transitionDelay = (i * 160) + 'ms';
   });
 
 })();
